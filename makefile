@@ -26,6 +26,7 @@ linux: all
 
 all: CFLAGS=$(ARCH) $(DBG) $(OPT) -Wall -c
 all: $(NAME).c $(NAME).h
+	mkdir -p out
 	$(CC) $(CFLAGS) $(NAME).c -c -o out/$(NAME).o
 	ar rc out/lib$(NAME).a out/$(NAME).o
 	ranlib out/lib$(NAME).a
