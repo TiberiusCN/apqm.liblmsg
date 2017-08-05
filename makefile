@@ -1,5 +1,5 @@
 NAME=lmsg
-CC=gcc
+CC=
 OPT=-O2
 ARCH=
 DBG=
@@ -15,10 +15,10 @@ L32: linux
 L64: ARCH=-m64
 L64: linux
 
-W32: CC=i686-w64-mingw32-gcc
+W32: CC=i686-w64-mingw32-
 W32: win
 
-W64: CC=x86_64-w64-mingw32-gcc
+W64: CC=x86_64-w64-mingw32-
 W64: win
 
 win: all
@@ -27,10 +27,10 @@ linux: all
 all: CFLAGS=$(ARCH) $(DBG) $(OPT) -Wall -c
 all: $(NAME).c $(NAME).h
 	mkdir -p out
-	$(CC) $(CFLAGS) $(NAME).c -c -o out/$(NAME).o
-	ar rc out/lib$(NAME).a out/$(NAME).o
-	ranlib out/lib$(NAME).a
+	$(CC)gcc $(CFLAGS) $(NAME).c -c -o out/$(NAME).o
+	$(CC)ar rc out/$(NAME).a out/$(NAME).o
+	$(CC)ranlib out/$(NAME).a
 
 clean:
-	rm out/*.a
-	rm out/*.o
+	rm -f out/*.a
+	rm -f out/*.o
